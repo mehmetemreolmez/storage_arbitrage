@@ -49,15 +49,6 @@ def SingleOperation(data,  storage_capacity, max_injection, max_withdrawal,injec
     return data, total_revenue
 
 
-
-
-
-
-
-
-
-
-
 st.title("Arbitraj hesaplama modülü çok yakında hizmetinizde :)")
 
 storage_capacity=st.number_input("Storage Capacity (MWh)")
@@ -78,4 +69,5 @@ if file is not None:
     
 if st.button("Calculate"):
     detay, toplam_gelir = SingleOperation(my_data, storage_capacity, max_injection, max_withdrawal,injection_efficiency, withdrawal_efficiency, injection_variable_cost,withdrawal_variable_cost)
-    st.download_button=("Download Result in Detail", detay.to_excel("result.xlsx"))
+
+st.download_button=("Download Result in Detail", detay.to_excel("result.xlsx"))
