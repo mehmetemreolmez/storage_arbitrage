@@ -6,7 +6,10 @@ import numpy as np
 import warnings
 warnings.filterwarnings('ignore')
 
+import io
 
+
+@st.cache_data
 
 def SingleOperation(data,  storage_capacity, max_injection, max_withdrawal,injection_efficiency, withdrawal_efficiency, injection_variable_cost, withdrawal_variable_cost):
     # Define the optimization problem
@@ -67,7 +70,10 @@ if file is not None:
     st.write((f'You have uploaded {file.name}'))
     my_data=pd.read_excel(file,engine='openpyxl')
     
-if st.button("Calculate"):
-    detay, toplam_gelir = SingleOperation(my_data, storage_capacity, max_injection, max_withdrawal,injection_efficiency, withdrawal_efficiency, injection_variable_cost,withdrawal_variable_cost)
+#if st.button("Calculate"):
+detay, toplam_gelir = SingleOperation(my_data, storage_capacity, max_injection, max_withdrawal,injection_efficiency, withdrawal_efficiency, injection_variable_cost,withdrawal_variable_cost)
+st.write(toplam_gelir)
 
-st.download_button=("Download Result in Detail", detay.to_excel("result.xlsx"))
+#if st.button("Download Result in Detail"):
+detay.to_excel('results.xlsx')
+st.write(detay)
